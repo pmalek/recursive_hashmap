@@ -2,7 +2,9 @@
 
 ## Build instructions
 
-In order to build this project edit **GMOCK_ROOT** variable in `CMakeLists.txt` to point to your googlemock root directory. After this is done you can simply create a build directory (out-of-source builds are preferred), create makefile using cmake and build it:
+In order to build this project edit **GMOCK_ROOT** variable in `CMakeLists.txt` to point to your googlemock root directory (google test should reside in **gtest** directory inside googlemock's root dir - at least the libraries built this way for me).
+
+After this is done you can simply create a build directory (out-of-source builds are preferred), create makefile using cmake and build it:
 
     git clone https://github.com/pmalek/recursive_hashmap.git && \ 
     mkdir build_dir && cd build_dir && \
