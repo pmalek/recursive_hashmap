@@ -35,7 +35,6 @@ T f(T v, HashMap<T, T>& hm)
         exists = hm.get(v_over_2, value);
         if (!exists)
         {
-            cout << v_over_2 << endl;
             value = f(v_over_2, hm);
             hm.put(v_over_2, value);
         }
@@ -47,7 +46,6 @@ T f(T v, HashMap<T, T>& hm)
         exists = hm.get(v_over_2, value);
         if (!exists)
         {
-            cout << v_over_2 << endl;
             value = f(v_over_2, hm);
             hm.put(v_over_2, value);
         }
@@ -57,7 +55,6 @@ T f(T v, HashMap<T, T>& hm)
         exists = hm.get(v_over_2_minus_1, value2);
         if (!exists)
         {
-            cout << v_over_2_minus_1 << endl;
             value2 = f(v_over_2_minus_1, hm);
             hm.put(v_over_2_minus_1, value2);
         }
