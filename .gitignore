@@ -7,3 +7,4 @@ CTestTestfile.cmake
 .idea
 recursive
 recursive_test
+*.swp
