@@ -1,6 +1,7 @@
 #include <iostream>
 #include <boost/multiprecision/cpp_int.hpp>
 #include "HashMap.h"
+#include "ArgsNumberOnlyCheck.h"
 
 using namespace std;
 
@@ -13,8 +14,8 @@ using namespace std;
  *
  * Helping itself with hm (which is of HashMap<> type) to store cached values
  */
-template <typename T>
-T f(T v, HashMap<T, T>& hm)
+template<typename T>
+T f(T v, HashMap<T, T> &hm)
 {
     if (0 == v || 1 == v)
     {
@@ -67,9 +68,12 @@ int main(int argc, char **argv)
 {
     if (argc != 2)
     {
-        cout << "Please pass in the program parameter (integer)" << endl;
+        cerr << "Please pass in the program parameter (integer)" << endl;
         return 1;
     }
+
+    if ( !ArgsNumberOnlyCheck::check(argv[1]))
+        return 1;
 
     // HashMap to help speed up the f() method by caching the results
     HashMap<boost::multiprecision::cpp_int, boost::multiprecision::cpp_int> hm;
