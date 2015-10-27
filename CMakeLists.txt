@@ -1,8 +1,19 @@
 cmake_minimum_required(VERSION 2.8)
 project(recursive CXX)
 
+IF(( NOT CMAKE_BUILD_TYPE) OR (CMAKE_BUILD_TYPE STREQUAL "Release"))
+  message(STATUS "Release build.")
+  SET( CMAKE_BUILD_TYPE "Release")
+ELSEIF(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  message(STATUS "Debug build.")
+  SET( CMAKE_BUILD_TYPE "Debug")
+ELSE()
+  message( FATAL_ERROR "Unknown build type!!! \"" ${CMAKE_BUILD_TYPE} "\"")
+ENDIF()
+
 set(SOURCE_DIRECTORY src)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11")
 include_directories(${SOURCE_DIRECTORY})
 
 file(GLOB SOURCE_FILES ${SOURCE_DIRECTORY}/*.cpp)
@@ -13,8 +24,6 @@ add_executable(recursive ${SOURCE_FILES})
 #################### TESTS #####################
 ################################################
 set(PROJECT_TEST_NAME ${PROJECT_NAME}_test)
-
-enable_testing()
 
 # maybe https://github.com/triglav/cmake-findgmock ? for gmock?
 set(GMOCK_ROOT PUT_YOUR_GMOCK_DIR_HERE)
